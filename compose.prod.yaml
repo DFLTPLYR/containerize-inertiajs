@@ -4,7 +4,7 @@ version: "3.9"
 services:
   app:
     build:
-      context: .
+      context: ./docker
       dockerfile: Dockerfile
     ports:
       - "8080:80"   # expose nginx on host

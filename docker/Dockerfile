@@ -62,8 +62,8 @@ RUN chown -R www-data:www-data /app \
 # --------------------------------------------------
 # Nginx configuration
 # --------------------------------------------------
-COPY ./nginx.conf /etc/nginx/nginx.conf
-COPY ./app.conf /etc/nginx/conf.d/app.conf
+COPY ./nginx/nginx.conf /etc/nginx/nginx.conf
+COPY ./nginx/app.conf /etc/nginx/conf.d/app.conf
 
 # --------------------------------------------------
 # Expose port
