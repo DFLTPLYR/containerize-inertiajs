@@ -62,8 +62,8 @@ RUN chown -R www-data:www-data /app \
 # --------------------------------------------------
 # Nginx configuration
 # --------------------------------------------------
-COPY ./nginx/nginx.conf /etc/nginx/nginx.conf
-COPY ./nginx/app.conf /etc/nginx/conf.d/app.conf
+COPY ./docker/nginx/nginx.conf /etc/nginx/nginx.conf
+COPY ./docker/nginx/app.conf /etc/nginx/conf.d/app.conf
 
 # --------------------------------------------------
 # Expose port
@@ -71,6 +71,11 @@ COPY ./nginx/app.conf /etc/nginx/conf.d/app.conf
 EXPOSE 80
 
 # --------------------------------------------------
-# Start PHP-FPM + Nginx
+# Supervisor configuration
 # --------------------------------------------------
-CMD ["sh", "-c", "php-fpm & nginx -g 'daemon off;'"]
+COPY ./docker/supervisord.conf /etc/supervisor/supervisord.conf
+
+EXPOSE 80
+
+CMD ["supervisord", "-c", "/etc/supervisor/supervisord.conf"]
+

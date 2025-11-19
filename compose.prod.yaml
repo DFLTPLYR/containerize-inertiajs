@@ -4,8 +4,8 @@ version: "3.9"
 services:
   app:
     build:
-      context: ./docker
-      dockerfile: Dockerfile
+      context: .
+      dockerfile: docker/Dockerfile
     ports:
       - "8080:80"   # expose nginx on host
     volumes:
@@ -19,6 +19,7 @@ services:
       - DB_DATABASE=laravel
       - DB_USERNAME=laravel
       - DB_PASSWORD=laravel
+      - APP_URL=test.jaycee.cloud
 
   redis:
     image: redis:alpine
